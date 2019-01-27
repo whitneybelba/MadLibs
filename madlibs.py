@@ -1,5 +1,6 @@
 text = "The [adjective] [noun] jumped over the [noun]."
 text_split = text.split(" ")
+print text_split
 
 def read_text(text_split):
     """Return a list of parts of speech.
@@ -40,37 +41,33 @@ def get_input(read_text):
         input_word = raw_input("Please enter a %s: " % word)
         # add the user's choices to a list
         user_input_list.append(input_word)
-    print user_input_list
     return user_input_list
 
 
-# def make_input_list(get_input):
-#     """Return a list of input words from user.
-    
-#     Args:
-#         read_text: a function that returns a list of parts of speech.
-#     Returns:
-#         a list of the words that came from the user's input.
-
-#     """
-
-#     user_input_list = get_input(read_text)
-#     replaced_list = []
-#     for word in user_input_list:
-#         replaced_list.append(word)
-#     print replaced_list
-#     return replaced_list
-
-
 def make_madlib(get_input):
+    """Return a final mad lib with parts of speech replaced by user input.
+    
+    Args:
+        get_input: a function that returns a list of words that a user entered.
+    Returns:
+        a string with the empty parts of speech replaced with a user's chosen
+        words.
+
+    """
+
+    # call the get_input function and make a variable from its output list
     replaced_list = get_input(read_text)
     index = 0
+    # we want both the index and the word that we want to replace in text_split 
     for (i, word) in enumerate(text_split):
+        # find the parts of speech, denoted by brackets
         if word[0] == "[":
+            # replace the word at that recorded index with user's input words
             text_split[i] = replaced_list[index]
+            # increase index for next loop so that user's next word is used
             index += 1
-    final_madlibs = " ".join(text_split)        
-    print final_madlibs
+    final_madlib = " ".join(text_split)        
+    print final_madlib
 
 make_madlib(get_input)
 
