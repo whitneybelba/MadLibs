@@ -1,6 +1,11 @@
+# text = "Every Wednesday, when I get home from school, I have a piano lesson. \
+# My teacher is a very strict [noun]. Her name is [female celebrity]. Teacher \
+# says I am a natural [noun] and have a good musical [part of the body]. I love \
+# piano lessons - they are [adjective]."
+
 text = "The [adjective] [noun] jumped over the [noun]."
+  
 text_split = text.split(" ")
-print text_split
 
 def read_text(text_split):
     """Return a list of parts of speech.
@@ -41,6 +46,7 @@ def get_input(read_text):
         input_word = raw_input("Please enter a %s: " % word)
         # add the user's choices to a list
         user_input_list.append(input_word)
+    print user_input_list
     return user_input_list
 
 
