@@ -1,7 +1,12 @@
+import string
+
 # text = "Every Wednesday, when I get home from school, I have a piano lesson. \
 # My teacher is a very strict [noun]. Her name is [female celebrity]. Teacher \
 # says I am a natural [noun] and have a good musical [part of the body]. I love \
 # piano lessons - they are [adjective]."
+
+# text = "Row, row, row your [noun], [adverb] down the [noun]. Merrily, merrily, \
+# merrily, merrily, life is but a [noun]."
 
 text = "The [adjective] [noun] jumped over the [noun]."
   
@@ -20,10 +25,13 @@ def read_text(text_split):
     """
 
     parts_of_speech = [] # instantiate empty list
-    for word in text_split: 
-        if word[0] == "[": # if the first letter of the word is a bracket,
-            #add the word, without the brackets, to the output list
+    for word in text_split:
+        # check if the last index is the other bracket or if it's punctuation
+        # this prints the last letter of the prompt correctly
+        if word[0] == "[" and word[-1] == "]": 
             parts_of_speech.append(word[1:-1])
+        elif word[0] == "[" and word[-1] in string.punctuation: 
+            parts_of_speech.append(word[1:-2])
     return parts_of_speech
     
 
